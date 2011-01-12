@@ -11,12 +11,14 @@ Typically, you don't need to install all the python bits except on windows, but 
 ----------INSTALL YOUR TOOLS---------
 1) Download Python 2.6 from http://python.org
 		-- Don't run the 64-bit version, you will go into compatibility heck
+		-- To use the 32-bit version of Python on the mac, run this: defaults write com.apple.versioner.python Prefer-32-Bit -bool yes
 		
 2) Download Python-PIL for Python 2.6 from http://www.pythonware.com/products/pil/
 		-- You want the platform-specific installer for your OS and Python 2.6.
 		-- This library is required for Django image support.
 		-- It has a platform-specific component, which is why you have to install it from a binary.
 		-- This should be working from the buildout now, be curious to hear back how it's working?
+		-- Mac Note: I had to install this manually. (sudo easy_install PIL)
 
 3) Download Python-setuptools for Python 2.6 from http://pypi.python.org/pypi/setuptools
 		-- You want the platform-specific installer for your OS and Python 2.6.
@@ -24,6 +26,8 @@ Typically, you don't need to install all the python bits except on windows, but 
 
 3.5) Download Python's PsycoPG2 Database Adapter from http://stickpeople.com/projects/python/win-psycopg/
 		-- You want the platform-specific installer for your OS and Python 2.6.
+		-- Mac Note: If you use the one click installer for pgsql, that puts libpg in a nonstandard location, and will cause the build to fail.
+		    To build psychopg2, run easy_install like this: PATH=$PATH:/Library/PostgreSQL/8.4/bin sudo easy_install psycopg2.
 
 4) Download Aptana Studio from http://aptana.org/
 		-- This is a customized version of the free Eclipse IDE
@@ -88,6 +92,7 @@ For all of those items, you should be able to basically follow the Installer pro
 4) It will download the basic stuff to make buildout work, which will take some time
 
 -----------RUN THE BUILDOUT-------------
+Mac Note: You may need to remove the outdated setuptools /System/Library/Frameworks/Python.framework/Versions/2.6/Extras/lib/python before this will work.
 1) Open Aptana Studio
 2) Open the podiobooks project if it isn't open
 3) Run->External Tools->podiobooks buildout
